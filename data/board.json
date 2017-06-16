@@ -1,0 +1,23 @@
+/**
+ * Created by Douglas on 6/16/2017.
+ */
+
+{
+    board: {
+        title: "morning board",
+        cards: [
+            {
+                description: 'Make your bed',
+                swimlane: 1,
+                icon: "fa-knife-fork"
+            }
+        ],
+        style: {
+            background: "green"
+        },
+        rewards: {
+            // on the fly?
+        }
+    }
+}
+
