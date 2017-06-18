@@ -1,4 +1,39 @@
 <section>
+
+  <style type="text/css">
+    .grid1 {
+      background: #c6ecf1;
+    }
+    .grid-stack-item-content {
+      color: #2c3e50;
+      text-align: center;
+      background-color: #732145;
+    }
+  </style>
+  
+  <div class="container-fluid">
+    <h1>gridstack-angular demo</h1>
+    <p>{{vm.widgets}}</p>
+    <div>
+      <a class="btn btn-primary" ng-click="vm.addWidget()" href="#">Add Widget</a>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <div gridstack class="grid-stack grid1" options="options" on-change="onChange(event,items)" on-drag-start="onDragStart(event,ui)" on-drag-stop="onDragStop(event,ui)" on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
+          <div gridstack-item ng-repeat="w in widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
+               gs-item-width="w.width" gs-item-height="w.height" gs-item-autopos="1" on-item-added="onItemAdded(item)" on-item-removed="onItemRemoved(item)">
+            <div class="grid-stack-item-content">
+              <a class="btn btn-primary" ng-click="removeWidget(w)" href="#">remove</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
   <div class="page-header">
     <h1>Boards</h1>
   </div>
@@ -19,4 +54,5 @@
   <div class="alert alert-warning text-center" ng-if="vm.boards.$resolved && !vm.boards.length">
     No Boards yet, why don't you <a ui-sref="boards.create">create one</a>?
   </div>
+
 </section>
