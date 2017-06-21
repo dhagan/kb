@@ -12,48 +12,50 @@
 
     vm.boards = BoardsService.query();
 
-      $scope.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
+      vm.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
 
-      $scope.options = {
+      vm.options = {
           cellHeight: 200,
           verticalMargin: 10
       };
 
-      $scope.addWidget = function() {
+      vm.addWidget = function() {
           var newWidget = { x:0, y:0, width:1, height:1 };
-          $scope.widgets.push(newWidget);
+          vm.widgets.push(newWidget);
+          $log.log("addWidget");
       };
 
-      $scope.removeWidget = function(w) {
-          var index = $scope.widgets.indexOf(w);
-          $scope.widgets.splice(index, 1);
+      vm.removeWidget = function(w) {
+          var index = vm.widgets.indexOf(w);
+          vm.widgets.splice(index, 1);
+          $log.log("removeWidget");
       };
 
-      $scope.onChange = function(event, items) {
+      vm.onChange = function(event, items) {
           $log.log("onChange event: "+event+" items:"+items);
       };
 
-      $scope.onDragStart = function(event, ui) {
+      vm.onDragStart = function(event, ui) {
           $log.log("onDragStart event: "+event+" ui:"+ui);
       };
 
-      $scope.onDragStop = function(event, ui) {
+      vm.onDragStop = function(event, ui) {
           $log.log("onDragStop event: "+event+" ui:"+ui);
       };
 
-      $scope.onResizeStart = function(event, ui) {
+      vm.onResizeStart = function(event, ui) {
           $log.log("onResizeStart event: "+event+" ui:"+ui);
       };
 
-      $scope.onResizeStop = function(event, ui) {
+      vm.onResizeStop = function(event, ui) {
           $log.log("onResizeStop event: "+event+" ui:"+ui);
       };
 
-      $scope.onItemAdded = function(item) {
+      vm.onItemAdded = function(item) {
           $log.log("onItemAdded item: "+item);
       };
 
-      $scope.onItemRemoved = function(item) {
+      vm.onItemRemoved = function(item) {
           $log.log("onItemRemoved item: "+item);
       };
 
