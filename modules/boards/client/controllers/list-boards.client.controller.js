@@ -16,7 +16,8 @@
 
       vm.options = {
           cellHeight: 200,
-          verticalMargin: 10
+          verticalMargin: 10,
+          acceptWidgets: '.grid-stack-item'
       };
 
       vm.addWidget = function() {
