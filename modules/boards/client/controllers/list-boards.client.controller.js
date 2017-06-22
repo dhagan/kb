@@ -12,7 +12,7 @@
 
     vm.boards = BoardsService.query();
 
-      vm.widgets = [{ x:0, y:0, width:1, height:1 }, { x:0, y:0, width:3, height:1 }];
+      vm.widgets = [{ x:0, y:0, width:3, height:1 }, { x:0, y:0, width:3, height:1 }];
 
       vm.options = {
           cellHeight: 200,
@@ -21,7 +21,7 @@
       };
 
       vm.addWidget = function() {
-          var newWidget = { x:0, y:0, width:1, height:1 };
+          var newWidget = { x:0, y:0, width:3, height:1 };
           vm.widgets.push(newWidget);
           $log.log("addWidget");
       };
