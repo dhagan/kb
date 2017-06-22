@@ -34,5 +34,9 @@ heroku config:set SESSION_SECRET=”hello doggy”
 
 heroku logs --tail
 
+# TODOs / gotchas
+* gulp jslint is failing due to formatting errors
+* https://devcenter.heroku.com/articles/github-integration#automatic-deploys
+
 
 
