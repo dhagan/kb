@@ -2,27 +2,27 @@
 
 
 Install node - https://nodejs.org/en/download/
+
 Install npm - https://docs.npmjs.com/getting-started/installing-node
+
 Install mongodb locally or use mlabs - free
 
 
 # Build
 
 npm install
+
 gulp
 
 If ./public/lib does not have angular.js and dependencies you may need to install or fix the path to bower, then
+
 npm postinstall
 
 # Deploy
 
-see also - http://www.tilcode.com/deploying-a-mean-stack-app-to-heroku/
+Install heroku toolkit, create a new app and set it as the default - see also - http://www.tilcode.com/deploying-a-mean-stack-app-to-heroku/
 
-install heroku toolkit and attach to your app
-
-cd to your local git repo $kb
-
-run the following commands
+then, cd to your local git repo $kb, and run the following commands
 
 git push heroku master
 
