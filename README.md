@@ -41,5 +41,14 @@ git push heroku master
 * gulp jslint is failing due to indenting/formatting errors
 * https://devcenter.heroku.com/articles/github-integration#automatic-deploys
 
+# routes
+
+/boards/{id}
+
+/boards/{id}/edit
+
+//// todo
+look at angular UI - swipe
+
 
 

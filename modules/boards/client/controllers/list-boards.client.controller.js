@@ -5,16 +5,18 @@
     .module('boards')
     .controller('BoardsListController', BoardsListController);
 
-  BoardsListController.$inject = ['$scope', '$log', 'BoardsService'];
+  BoardsListController.$inject = ['$rootScope', '$scope', '$log', 'BoardsService'];
 
-  function BoardsListController($scope, $log, BoardsService) {
+  function BoardsListController($rootScope, $scope, $log, BoardsService) {
     var vm = this;
 
+    $rootScope.navTitle = 'Morning Routine';
     vm.boards = BoardsService.query();
 
-      vm.widgets = [{ x:0, y:0, width:3, height:1 }, { x:0, y:0, width:3, height:1 }];
+      vm.widgets = [{ x:0, y:0, width:4, height:1, title: 'Make your bed', description: 'love your room.' }, { x:0, y:0, width:4, height:1, title: 'Pack your lunch', description: 'make it yummy.' }];
 
       vm.options = {
+          width: 4,
           cellHeight: 200,
           verticalMargin: 10,
           acceptWidgets: '.grid-stack-item'
