@@ -39,35 +39,35 @@
     vm.removeWidget = function (w) {
       var index = vm.widgets.indexOf(w);
       vm.widgets.splice(index, 1);
-      $log.log("removeWidget");
+      $log.log('removeWidget');
     };
 
     vm.onChange = function (event, items) {
-      $log.log("onChange event: " + event + " items:" + items);
+      $log.log('onChange event: ' + event + ' items:' + items);
     };
 
     vm.onDragStart = function (event, ui) {
-      $log.log("onDragStart event: " + event + " ui:" + ui);
+      $log.log('onDragStart event: ' + event + ' ui:' + ui);
     };
 
     vm.onDragStop = function (event, ui) {
-      $log.log("onDragStop event: " + event + " ui:" + ui);
+      $log.log('onDragStop event: ' + event + ' ui:' + ui);
     };
 
     vm.onResizeStart = function (event, ui) {
-      $log.log("onResizeStart event: " + event + " ui:" + ui);
+      $log.log('onResizeStart event: ' + event + ' ui:' + ui);
     };
 
     vm.onResizeStop = function (event, ui) {
-      $log.log("onResizeStop event: " + event + " ui:" + ui);
+      $log.log('onResizeStop event: ' + event + ' ui:' + ui);
     };
 
     vm.onItemAdded = function (item) {
-      $log.log("onItemAdded item: " + item);
+      $log.log('onItemAdded item: ' + item);
     };
 
     vm.onItemRemoved = function (item) {
-      $log.log("onItemRemoved item: " + item);
+      $log.log('onItemRemoved item: ' + item);
     };
 
   }

@@ -28,7 +28,7 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4 grid1">
+      <div class="col-xsl-4 col-sm-4 col-md-4 grid1">
         <h3 class="text-center ">TODO</h3>
         <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)" on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)" on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
           <div gridstack-item ng-repeat="w in vm.widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
@@ -42,7 +42,7 @@
         </div>
         <h3></h3>
       </div>
-      <div class="col-md-4 grid2">
+      <div class="col-xsl-4 col-sm-4 col-md-4 grid2">
         <h3 class="text-center">In Progress</h3>
         <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)" on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)" on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
           <div gridstack-item ng-repeat="w in vm.widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
@@ -54,7 +54,7 @@
         </div>
         <h3></h3>
       </div>
-      <div class="col-md-4 grid3">
+      <div class="col-xsl-4 col-sm-4 col-md-4 grid3">
         <h3 class="text-center">Done</h3>
         <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)" on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)" on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
           <div gridstack-item ng-repeat="w in vm.widgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
