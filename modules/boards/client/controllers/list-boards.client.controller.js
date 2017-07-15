@@ -13,33 +13,36 @@
     $rootScope.navTitle = 'Morning Routine';
     vm.boards = BoardsService.query();
 
-    vm.widgets = [{ x: 0, y: 0, width: 4, height: 1, title: 'Make your bed', description: 'love your room.' }, {
-      x: 0,
-      y: 0,
-      width: 4,
-      height: 1,
-      title: 'Pack your lunch',
-      description: 'make it yummy.'
-    }];
+    vm.widgets = [
+      { x: 0, y: 0, width: 4, height: 1, title: 'Make your bed' },
+      { x: 0, y: 0, width: 4, height: 1, title: 'Pack your lunch - makee it yummy' }
+    ];
 
     vm.options = {
       //animate: true,
+      disableResize: true,
       width: 4,
-      cellHeight: 200,
-      verticalMargin: 10,
+      cellHeight: 100,
+      verticalMargin: 5,
       acceptWidgets: '.grid-stack-item'
     };
 
     vm.addWidget = function () {
-      var newWidget = { x: 0, y: 0, width: 3, height: 1 };
+      var newWidget = { x: 0, y: 0, width: 4, height: 1, title: 'Your new task' };
       vm.widgets.push(newWidget);
-      $log.log("addWidget");
+      $log.log('addWidget');
     };
 
     vm.removeWidget = function (w) {
       var index = vm.widgets.indexOf(w);
       vm.widgets.splice(index, 1);
       $log.log('removeWidget');
+    };
+
+    vm.widgetMoveNext = function (w) {
+      var index = vm.widgets.indexOf(w);
+      vm.widgets.splice(index, 1);
+      $log.log('widgetMoveNext');
     };
 
     vm.onChange = function (event, items) {
