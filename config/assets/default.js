@@ -10,6 +10,7 @@ module.exports = {
         'public/lib/gridstack/dist/gridstack-extra.css'
       ],
       js: [
+        'public/data/boards.js',
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/jquery-ui/jquery-ui.js',
         'public/lib/jqueryui-touch-punch/jquery.ui.touch-punch.js',
