@@ -12,18 +12,20 @@
     /* setting min-height recommended by troolee
      https://github.com/troolee/gridstack.js/issues/230
      https://github.com/troolee/gridstack.js/issues/628 */
-    .grid1 {
+    .grid0 {
       background: rgba(255, 0, 0, 0.1);
-      min-height: 500px;
+    }
+
+    .grid1 {
+      background: lightgoldenrodyellow;
     }
 
     .grid2 {
-      background: lightgoldenrodyellow;
-      min-height: 500px;
+      background: rgba(0, 255, 0, 0.1);
     }
 
-    .grid3 {
-      background: rgba(0, 255, 0, 0.1);
+    .grid-stack-min-height {
+      background: rgba(255, 0, 0, 0.1);
       min-height: 500px;
     }
 
@@ -33,11 +35,11 @@
       background-color: gold;
     }
 
-    .grid2 .grid-stack-item-content {
+    .grid1 .grid-stack-item-content {
       background-color: goldenrod;
     }
 
-    .grid3 .grid-stack-item-content {
+    .grid2 .grid-stack-item-content {
       background-color: green;
     }
 
@@ -70,19 +72,42 @@
 
   <div class="container-fluid">
     <div class="row">
-      <div class="col-xsl-4 col-sm-4 col-md-4 grid1">
+      <div class="col-xsl-4 col-sm-4 col-md-4 grid0">
         <h4 class="text-center bold">TODO</h4>
-        <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)"
+        <div gridstack class="grid-stack grid-stack-4 grid-stack-min-height" options="vm.options" on-change="vm.onChange(event,items)"
+             on-added="vm.onAdded(event,items, 0)" on-removed="vm.onRemoved(event,items, 0)"
              on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)"
-             on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
-          <div gridstack-item ng-repeat="w in vm.todoWidgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
-               gs-item-width="w.width" gs-item-height="w.height" gs-item-autopos="1"
+             on-resize-start="vm.onResizeStart(event,ui)" on-resize-stop="vm.onResizeStop(event,ui)">
+          <div gridstack-item ng-repeat="w in vm.widgets[0]" class="grid-stack-item"
+               gs-item-id="w.wid" gs-item-x="w.x" gs-item-y="w.y"
+               gs-item-width="w.width" gs-item-height="w.height"
                on-item-added="vm.onItemAdded(item)" on-item-removed="vm.onItemRemoved(item)">
             <div class="grid-stack-item-content">
               <h3>{{w.title}}</h3>
               <a class="pull-right hover-btn next-button" ng-click="vm.widgetMoveNext(w)" href="#"><span
                 class="glyphicon glyphicon-chevron-right"></span></a>
-              <a class="hover-btn cancel-button" ng-click="vm.removeWidget(w)" href="#"><span
+              <a class="hover-btn cancel-button" ng-click="vm.removeWidget(w, 0)" href="#"><span
+                class="glyphicon glyphicon-remove-circle"></span></a>
+            </div>
+          </div>
+        </div>
+        <h3></h3>
+      </div>
+      <div class="col-xsl-4 col-sm-4 col-md-4 grid1">
+        <h4 class="text-center">In Progress</h4>
+        <div gridstack class="grid-stack grid-stack-4 grid-stack-min-height" options="vm.options" on-change="vm.onChange(event,items)"
+             on-added="vm.onAdded(event,items, 1)" on-removed="vm.onRemoved(event,items, 1)"
+             on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)"
+             on-resize-start="vm.onResizeStart(event,ui)" on-resize-stop="vm.onResizeStop(event,ui)">
+          <div gridstack-item ng-repeat="w in vm.widgets[1]" class="grid-stack-item"
+               gs-item-id="w.wid" gs-item-x="w.x" gs-item-y="w.y"
+               gs-item-width="w.width" gs-item-height="w.height"
+               on-item-added="vm.onItemAdded(item)" on-item-removed="vm.onItemRemoved(item)">
+            <div class="grid-stack-item-content">
+              <h3>{{w.title}}</h3>
+              <a class="pull-right hover-btn next-button" ng-click="vm.widgetMoveNext(w)" href="#"><span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+              <a class="hover-btn cancel-button" ng-click="vm.removeWidget(w, 1)" href="#"><span
                 class="glyphicon glyphicon-remove-circle"></span></a>
             </div>
           </div>
@@ -90,30 +115,21 @@
         <h3></h3>
       </div>
       <div class="col-xsl-4 col-sm-4 col-md-4 grid2">
-        <h4 class="text-center">In Progress</h4>
-        <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)"
-             on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)"
-             on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
-          <div gridstack-item ng-repeat="w in vm.inProgressWidgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
-               gs-item-width="w.width" gs-item-height="w.height" gs-item-autopos="1"
-               on-item-added="vm.onItemAdded(item)" on-item-removed="vm.onItemRemoved(item)">
-            <div class="grid-stack-item-content">
-              <a class="btn btn-primary" ng-click="vm.removeInProgressWidget(w)" href="#">remove</a>
-            </div>
-          </div>
-        </div>
-        <h3></h3>
-      </div>
-      <div class="col-xsl-4 col-sm-4 col-md-4 grid3">
         <h4 class="text-center">Done</h4>
-        <div gridstack class="grid-stack grid-stack-4" options="vm.options" on-change="vm.onChange(event,items)"
+        <div gridstack class="grid-stack grid-stack-4 grid-stack-min-height" options="vm.options" on-change="vm.onChange(event,items)"
+             on-added="vm.onAdded(event,items, 2)" on-removed="vm.onRemoved(event,items, 2)"
              on-drag-start="vm.onDragStart(event,ui)" on-drag-stop="vm.onDragStop(event,ui)"
-             on-resize-start="onResizeStart(event,ui)" on-resize-stop="onResizeStop(event,ui)">
-          <div gridstack-item ng-repeat="w in vm.doneWidgets" class="grid-stack-item" gs-item-x="w.x" gs-item-y="w.y"
-               gs-item-width="w.width" gs-item-height="w.height" gs-item-autopos="1"
+             on-resize-start="vm.onResizeStart(event,ui)" on-resize-stop="vm.onResizeStop(event,ui)">
+          <div gridstack-item ng-repeat="w in vm.widgets[2]" class="grid-stack-item"
+               gs-item-id="w.wid" gs-item-x="w.x" gs-item-y="w.y"
+               gs-item-width="w.width" gs-item-height="w.height"
                on-item-added="vm.onItemAdded(item)" on-item-removed="vm.onItemRemoved(item)">
             <div class="grid-stack-item-content">
-              <a class="btn btn-primary" ng-click="vm.removeWidget(w)" href="#">remove</a>
+              <h3>{{w.title}}</h3>
+              <a class="pull-right hover-btn next-button" ng-click="vm.widgetMoveNext(w)" href="#"><span
+                class="glyphicon glyphicon-chevron-right"></span></a>
+              <a class="hover-btn cancel-button" ng-click="vm.removeWidget(w, 2)" href="#"><span
+                class="glyphicon glyphicon-remove-circle"></span></a>
             </div>
           </div>
         </div>
@@ -123,10 +139,14 @@
   </div>
 
   <div class="container-fluid">
-    <p>{{vm.widgets}}</p>
+    <p>{{vm.widgets[0]}}</p>
+    <p>{{vm.widgets[1]}}</p>
+    <p>{{vm.widgets[2]}}</p>
     <div class="row">
-        <a class="btn btn-primary " ng-click="vm.addWidget()" href="#">Add Widget</a>
-        <a class="btn btn-primary " ng-click="vm.removeWidget()" href="#">Remove Widget</a>
+        <a class="btn btn-primary " ng-click="vm.addWidget(0)" href="#">Add Widget 0</a>
+        <a class="btn btn-primary " ng-click="vm.removeWidget(0)" href="#">Remove Widget 0</a>
+      <a class="btn btn-primary " ng-click="vm.addWidget(1)" href="#">Add Widget 1</a>
+      <a class="btn btn-primary " ng-click="vm.removeWidget(1)" href="#">Remove Widget 1</a>
       <a class="btn btn-primary " ng-click="vm.addInProgressWidget()" href="#">Add Widget</a>
       <a class="btn btn-primary " ng-click="vm.removeInProgressWidget()" href="#">Remove Widget</a>
         <a ng-click="vm.resetBoard()" href="#"><span
